@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body id="body">
+    <!--Container-->
+    <div class="container">
+        <!--Quote area main part-->
+        <div class="container__quote_area">
+            <!--Quote area-->
+            <div class="container__quote_area__qwrite">
+                <p id="quote" >Nothing is impossible, the word itself says 'I'm possible'!</p>
+            </div>
+            <!--Writer area-->
+            <div class="container__quote_area__qwriter">
+                – Audrey Hepburn
+            </div>
+            <!--Button area-->
+            <div class="container__quote_area__qbuttons">
+                <!--Social Media Buttons-->
+                <div class="container__quote_area__qbuttons__social_media">
+                        <i id="btn_tumblr" class="fab fa-tumblr" onclick="tumblr_share()"></i>
+                        <i id="btn_twitter" class="fab fa-twitter" onclick="twitter_share()"></i>   
+                </div>
+                <!--Change Quote Button-->
+                <div class="container__quote_area__qbuttons__change">
+                    <button id="btn_social" onclick="setRandomComplete()">New Quoto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
+    <div class="footer">
+        <a href="#" class="href">Prepared by Softyak</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none; }
+
+body {
+  background: #f5da42; }
+
+a {
+  color: #fff;
+  text-decoration: none; }
+
+/* Grid System mixins*/
+body {
+  display: grid;
+  grid-template-columns: 1fr [area-s] 1000px [area-e] 1fr;
+  grid-template-rows: 100px [qarea-s] 650px [qarea-e foot-s] 200px [foot-e] 1fr;
+  /* Container */
+  /*
+    * The main part
+    * İnclude quote area
+    * İnclude writer area
+    * include buttons area
+*/ }
+  body .container {
+    display: grid;
+    grid-template-columns: 1fr [a-s] 750px [a-e] 1fr;
+    grid-template-rows: 1fr;
+    grid-column: area-s/area-e;
+    grid-row: qarea-s/qarea-e; }
+    body .container__quote_area {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: [quote-s] 350px [quote-e writer-s] 150px [writer-e button-s] 150px [button-e];
+      grid-column: a-s/a-e;
+      grid-row: 1fr;
+      height: auto;
+      border-radius: 10px;
+      background: #fff;
+      color: #f5da42;
+      /*
+                consist of two areas:
+                * social media buttons
+                * change buttons
+            */ }
+      body .container__quote_area__qwrite {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1fr;
+        grid-row: quote-s/quote-e;
+        font-family: "Raleway", sans-serif;
+        font-size: 28px;
+        margin: 50px; }
+        body .container__quote_area__qwrite p::before {
+          display: block;
+          content: "\"";
+          font-family: "Raleway", sans-serif;
+          font-size: 4em;
+          margin-bottom: -80px;
+          margin-left: -30px; }
+      body .container__quote_area__qwriter {
+        grid-column: 1fr;
+        grid-row: writer-s/writer-e;
+        font-family: "Raleway", sans-serif;
+        font-size: 1.50em;
+        text-align: right;
+        margin: 50px; }
+      body .container__quote_area__qbuttons {
+        display: grid;
+        grid-template-columns: [sm-s] 200px [sm-e] 1fr [ch-s] 160px [ch-e];
+        grid-template-rows: button-s/button-e; }
+        body .container__quote_area__qbuttons__social_media {
+          grid-column: sm-s/sm-e;
+          grid-row: 1fr;
+          padding-left: 40px; }
+          body .container__quote_area__qbuttons__social_media .fab {
+            padding: 20px;
+            margin-left: 10px;
+            border-radius: 10px;
+            background: #f5da42;
+            color: #fff; }
+          body .container__quote_area__qbuttons__social_media .fab:hover {
+            cursor: pointer;
+            opacity: 0.8;
+            background: #ffec80; }
+        body .container__quote_area__qbuttons__change {
+          grid-column: ch-s/ch-e;
+          grid-row: 1fr; }
+          body .container__quote_area__qbuttons__change button {
+            font-family: "Raleway", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: right;
+            padding: 20px;
+            border: none;
+            border-radius: 6px;
+            background: #f5da42;
+            color: #fff; }
+      body .container__quote_area button:hover {
+        opacity: 0.8;
+        cursor: pointer; }
+  body .footer {
+    grid-column: area-s/area-e;
+    grid-row: foot-s/foot-e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    font-size: 16px; }

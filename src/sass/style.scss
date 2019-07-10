@@ -1,0 +1,132 @@
+$background_color: #f5da42; //default background color
+$font: 'Raleway', sans-serif; //default font family
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+body{
+    background: $background_color;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+/* Grid System mixins*/
+@mixin grid-system($column, $row) {
+    display: grid;
+    grid-template-columns: $column;
+    grid-template-rows: $row;
+}
+@mixin grid-size($column, $row) {
+    grid-column: $column;
+    grid-row: $row;
+}
+@mixin completly_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    @include grid-system(1fr [area-s] 1000px [area-e] 1fr, 100px [qarea-s] 650px [qarea-e foot-s] 200px [foot-e] 1fr);
+/* Container */
+/*
+    * The main part
+    * İnclude quote area
+    * İnclude writer area
+    * include buttons area
+*/
+    .container{
+        @include grid-system(1fr [a-s] 750px [a-e] 1fr, 1fr);
+        @include grid-size(area-s/area-e, qarea-s/qarea-e);
+        //quote area: main part 
+        &__quote_area{
+            @include grid-system(1fr, [quote-s] 350px [quote-e writer-s] 150px [writer-e button-s] 150px [button-e]);
+            @include grid-size(a-s/a-e, 1fr);
+            height: auto;
+            border-radius: 10px;
+            background: #fff;
+            color: $background_color;
+            //qwrite: include the quote and quote mark
+            &__qwrite{
+                @include completly_centered();
+                @include grid-size(1fr, quote-s/quote-e);
+                font-family: $font;
+                font-size: 28px;
+                margin: 50px;
+                p::before{
+                    display: block;
+                    content: "\"";
+                    font-family: $font;
+                    font-size: 4em;
+                    margin-bottom: -80px; 
+                    margin-left: -30px;
+                }
+            }
+            //qwriter: include the quote writer 
+            &__qwriter{
+                @include grid-size(1fr, writer-s/writer-e);
+                font-family: $font;
+                font-size: 1.50em;
+                text-align: right;
+                margin: 50px;
+            }
+            //qbuttons: include the social media buttons and New Quote button to change the quotes
+            /*
+                consist of two areas:
+                * social media buttons
+                * change buttons
+            */
+            &__qbuttons{
+                @include grid-system([sm-s] 200px [sm-e] 1fr [ch-s] 160px [ch-e], button-s/button-e);
+                //social media: include social media button 
+                //tumblr
+                //twitter
+                &__social_media{
+                    @include grid-size(sm-s/sm-e, 1fr);
+                    padding-left: 40px;
+                    .fab{
+                        padding: 20px;
+                        margin-left: 10px;
+                        border-radius: 10px;
+                        background: #f5da42;
+                        color: #fff;
+                    }
+                    .fab:hover{
+                        cursor: pointer;
+                        opacity: 0.8;
+                        background: #ffec80;
+                    }
+                }
+                //change: include New Quote button to change the quote
+                &__change{
+                    @include grid-size(ch-s/ch-e, 1fr);
+                    button{
+                        font-family: $font;
+                        font-size: 13px;
+                        font-weight: 700;
+                        text-align: right;
+                        padding: 20px;
+                        border: none;
+                        border-radius: 6px;
+                        background: $background_color;
+                        color: #fff;
+                    }
+                }
+            }
+            button:hover{
+                opacity: 0.8;
+                cursor: pointer;
+            }
+        }
+    }
+    //footer area
+    .footer{
+        @include grid-size(area-s/area-e, foot-s/foot-e);
+        @include completly_centered();
+        font-family: $font;
+        font-weight: 700;
+        font-size: 16px;
+    }
+}
